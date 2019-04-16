@@ -12,6 +12,11 @@ const port = process.env.PORT || 3000
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
+app.use(function(req, res, next) {
+    res.setHeader('Content-Type', 'application/json')
+    next();
+  });
+
 app.get('/products', (req, res) =>{
     Product.find({}, (err, products) =>{
         if (err) return res.status(500).send({message: "error mostrando"})
