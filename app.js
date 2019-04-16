@@ -36,7 +36,7 @@ app.post('/products', (req, res) =>{
 
     product.save((err, productStored) =>{
         if (err) res.status(200).send({message: 'error salvando'})
-        res.status(201).json({products: productStored})
+        res.status(201).json(productStored)
     })
 })
 
