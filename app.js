@@ -20,8 +20,8 @@ app.use(function(req, res, next) {
 app.get('/products', (req, res) =>{
     Product.find({}, (err, products) =>{
         if (err) return res.status(500).send({message: "error mostrando"})
-        if (!products) return res.status(404).send({products: []})
-        res.status(200).send({ products })
+        if (!products) return res.status(404).json({products: []})
+        res.status(200).json({ products })
     })
     
 })
@@ -36,7 +36,7 @@ app.post('/products', (req, res) =>{
 
     product.save((err, productStored) =>{
         if (err) res.status(200).send({message: 'error salvando'})
-        res.status(200).send({products: productStored})
+        res.status(201).json({products: productStored})
     })
 })
 
