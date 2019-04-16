@@ -40,7 +40,7 @@ app.post('/products', (req, res) =>{
     })
 })
 
-mongoose.connect('mongodb://localhost:27017/shop',{ useNewUrlParser: true }, (err, res) =>{
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/shop',{ useNewUrlParser: true }, (err, res) =>{
     if (err) throw err
     console.log('Conexion mongo ok')
 
