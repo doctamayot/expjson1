@@ -21,7 +21,7 @@ app.get('/products', (req, res) =>{
     Product.find({}, (err, products) =>{
         if (err) return res.status(500).send({message: "error mostrando"})
         if (!products) return res.status(404).json({products: []})
-        res.status(200).json({ products })
+        res.json(products)
     })
     
 })
